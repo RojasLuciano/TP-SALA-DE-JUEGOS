@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="jumbotron d-flex flex-column align-items-center justify-content-center text-center">
+    <div class="card-body p-4">
+      <h3>SPRINT 2</h3>
+      <a class="navbar-brand d-flex justify-content-center align-items-center" *ngIf="userLogged|async as user;">
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+          <h1 class="display-4 fw-normal">Bienvenido!</h1>
+          <p class="fs-5 text-muted">{{ user.email }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
