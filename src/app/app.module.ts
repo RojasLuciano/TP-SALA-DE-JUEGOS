@@ -10,15 +10,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SpinnerComponent } from 'src/utils/spinner/spinner.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { HangmanComponent } from './components/hangman/hangman.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDO-f1H-ovvRYrjTa1bWnvlnBcrYXnEBoI",
-  authDomain: "my-login-48757.firebaseapp.com",
-  projectId: "my-login-48757",
-  storageBucket: "my-login-48757.appspot.com",
-  messagingSenderId: "558322019754",
-  appId: "1:558322019754:web:a6c2076da717764e154fd3",
-  measurementId: "G-95GXTMQ8R3"
+  apiKey: "AIzaSyBno1uXJw6birRZgQFOKOgMs3CWo3shdYk",
+  authDomain: "labo4-241ef.firebaseapp.com",
+  projectId: "labo4-241ef",
+  storageBucket: "labo4-241ef.appspot.com",
+  messagingSenderId: "452483955767",
+  appId: "1:452483955767:web:cfe13408823c63659c93b2",
+  measurementId: "G-MG7RC5CTNL"
 };
 
 @NgModule({
@@ -29,7 +32,10 @@ const firebaseConfig = {
     AboutMeComponent,
     GamesComponent,
     SpinnerComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    ChatComponent ,
+    HangmanComponent,
+     
   ],
   imports: [
     BrowserModule,
@@ -37,6 +43,7 @@ const firebaseConfig = {
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    HttpClientModule
 
   ],
   providers: [],
