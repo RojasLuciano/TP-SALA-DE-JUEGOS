@@ -13,6 +13,7 @@ import { RegisterUserComponent } from './components/register-user/register-user.
 import { ChatComponent } from './components/chat/chat.component';
 import { HangmanComponent } from './components/hangman/hangman.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AnagramComponent } from './components/anagram/anagram.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBno1uXJw6birRZgQFOKOgMs3CWo3shdYk",
@@ -35,6 +36,7 @@ const firebaseConfig = {
     RegisterUserComponent,
     ChatComponent ,
     HangmanComponent,
+    AnagramComponent
      
   ],
   imports: [

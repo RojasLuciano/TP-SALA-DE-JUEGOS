@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SweetalertService } from 'src/app/services/sweetalert.service';
 
 @Component({
   selector: 'app-cards',
@@ -17,7 +18,9 @@ export class CardsComponent implements OnInit {
   aciertos:number = 0;
   numeroAnterior:number = 0;
 
-  constructor() { }  
+  constructor(
+    private sweetAlert: SweetalertService
+  ) { }  
   
   ngOnInit(): void {
     var cartaAzar = Math.trunc(Math.random()*52);
@@ -44,8 +47,7 @@ export class CardsComponent implements OnInit {
     else
     {
       this.aciertos = 0;  
-        this.errorShow = true; 
-        this.errorMessage = "No has acertado";  
+      this.sweetAlert.showWarning('Incorrecto', 'No has acertado');  
       setTimeout(() => {
         this.errorShow = false; 
       }, 4000);
@@ -67,8 +69,7 @@ export class CardsComponent implements OnInit {
     else
     {
       this.aciertos = 0;
-      this.errorShow = true; 
-      this.errorMessage = "No has acertado";        
+      this.sweetAlert.showWarning('Incorrecto', 'No has acertado');  
       setTimeout(() => {
         this.errorShow = false; 
       }, 4000);

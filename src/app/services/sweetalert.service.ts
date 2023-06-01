@@ -26,4 +26,14 @@ export class SweetalertService {
       confirmButtonText: 'Cerrar'
     });
   }
+
+  showWarning(title: string, text: string) {
+    Swal.fire({
+      icon: 'warning',
+      title: title,
+      text: text,
+      showConfirmButton: false,
+      timer: 2000
+    });
+  }
 }
