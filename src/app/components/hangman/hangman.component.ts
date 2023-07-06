@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HangmanService } from 'src/app/services/hangman/hangman.service';
-
+import { RankingService } from 'src/app/services/ranking/ranking.service';
 
 @Component({
   selector: 'app-hangman',
@@ -17,9 +17,11 @@ export class HangmanComponent implements OnInit {
   triesImg = "assets/img/hangman/hangman0.png";
   letterButton:boolean = false;
   data:any;
+  pointUser: number = 0;
 
 
-  constructor( private service2: HangmanService) { }
+  constructor( private service2: HangmanService,
+    private ranking: RankingService) { }
 
   ngOnInit(): void {
     this.storeWord();
@@ -89,6 +91,7 @@ export class HangmanComponent implements OnInit {
       this.letterButton = true;
       this.win = true;
       this.triesImg = "assets/img/hangman/hangmanWon.png"
+      this.pointUser == 0 ? this.pointUser = 3 : this.pointUser *= Math.floor(Math.random() * (1 - 0) + 1);
     }
 
     if (this.tries >= 7) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RankingService } from 'src/app/services/ranking/ranking.service';
 import { SweetalertService } from 'src/app/services/sweetalert.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class CardsComponent implements OnInit {
 
   errorShow: boolean = false;
   errorMessage: string = '';
-
+  pointsUser: number = 0;
   itemImageUrl:string = "assets/img/cards/cartas.jpg";
   cartas: Array<number> = new Array();
   right:number = 0;
@@ -19,7 +20,8 @@ export class CardsComponent implements OnInit {
   numeroAnterior:number = 0;
 
   constructor(
-    private sweetAlert: SweetalertService
+    private sweetAlert: SweetalertService,
+    private ranking: RankingService
   ) { }  
   
   ngOnInit(): void {
@@ -43,11 +45,16 @@ export class CardsComponent implements OnInit {
     if(this.numeroAnterior <= cartaAzar%13)
     {
       this.aciertos++;
+      this.pointsUser == 0 ? this.pointsUser = 3 : this.pointsUser *= Math.floor(Math.random() * (3 - 0) + 1);
+      console.log(this.pointsUser);
     }
     else
     {
       this.aciertos = 0;  
       this.sweetAlert.showWarning('Incorrecto', 'No has acertado');  
+      if (this.pointsUser != 0) {
+        this.ranking.addPoint(this.pointsUser, "Mayor o Menor");
+      }
       setTimeout(() => {
         this.errorShow = false; 
       }, 4000);

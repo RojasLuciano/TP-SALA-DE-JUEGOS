@@ -14,6 +14,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { HangmanComponent } from './components/hangman/hangman.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AnagramComponent } from './components/anagram/anagram.component';
+import { RankingComponent } from './components/ranking/ranking.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBno1uXJw6birRZgQFOKOgMs3CWo3shdYk",
@@ -36,7 +37,8 @@ const firebaseConfig = {
     RegisterUserComponent,
     ChatComponent ,
     HangmanComponent,
-    AnagramComponent
+    AnagramComponent,
+    RankingComponent
      
   ],
   imports: [

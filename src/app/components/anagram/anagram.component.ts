@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RankingService } from 'src/app/services/ranking/ranking.service';
 import { SweetalertService } from 'src/app/services/sweetalert.service';
 
 @Component({
@@ -12,8 +13,10 @@ export class AnagramComponent implements OnInit {
   errorMessage: string = '';
   messageShow: boolean = false;
   message: string = '';
+  pointUser: number = 0;
   constructor(
-    private sweetAlert: SweetalertService
+    private sweetAlert: SweetalertService,
+    private ranking: RankingService,
   ) { }
 
   ngOnInit() {
@@ -42,6 +45,8 @@ export class AnagramComponent implements OnInit {
     if(this.palabraSeleccionada == this.respuesta.toLocaleLowerCase()){
       this.ganador = true;
       this.sweetAlert.showSuccess('Correcto', 'Has acertado');
+      this.pointUser = this.palabraSeleccionada.length * Math.floor(Math.random() * (10 - 0) + 1);
+      this.ranking.addPoint(this.pointUser, "Anagrama");
       setTimeout(() => {
         this.messageShow = false;
       }, 4000);

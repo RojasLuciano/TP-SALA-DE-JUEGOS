@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AskedService } from 'src/app/services/asked/asked.service';
 import { SweetalertService } from 'src/app/services/sweetalert.service';
+import { RankingService } from 'src/app/services/ranking/ranking.service';
+
 
 @Component({
   selector: 'app-asked',
@@ -12,7 +14,7 @@ export class AskedComponent implements OnInit {
   errorMessage: string = '';
   messageShow: boolean = false;
   message: string = '';
-
+  pointsUser: number = 0;
   urlImage: string = "";
   response1: string = "";
   response2: string = "";
@@ -21,7 +23,8 @@ export class AskedComponent implements OnInit {
   selectedPokemon: string = "";
 
   constructor(private pokemonService: AskedService,
-    private sweetAlert: SweetalertService
+    private sweetAlert: SweetalertService,
+    private ranking: RankingService,
     ) { }
 
   ngOnInit(): void {
@@ -57,11 +60,16 @@ export class AskedComponent implements OnInit {
       case 1:
         if (this.response1 !== this.selectedPokemon) {
           this.sweetAlert.showWarning('Error', 'No has acertado');
+          if (this.pointsUser != 0) {
+            this.ranking.addPoint(this.pointsUser, "Preguntados");
+          }
+          this.pointsUser = 0;
           setTimeout(() => {
             this.errorShow = false;
           }, 4000);
         } else {
           this.sweetAlert.showSuccess('Correcto', 'Has acertado');
+          this.pointsUser == 0 ? this.pointsUser = 3 : this.pointsUser *= Math.floor(Math.random() * (3 - 0) + 1);
           setTimeout(() => {
             this.messageShow = false;
           }, 4000);
@@ -70,11 +78,15 @@ export class AskedComponent implements OnInit {
       case 2:
         if (this.response2 !== this.selectedPokemon) {
           this.sweetAlert.showWarning('Error', 'No has acertado');
+          if (this.pointsUser != 0) {
+            this.ranking.addPoint(this.pointsUser, "Preguntados");
+          }
           setTimeout(() => {
             this.errorShow = false;
           }, 4000);
         } else {
           this.sweetAlert.showSuccess('Correcto', 'Has acertado');
+          this.pointsUser == 0 ? this.pointsUser = 3 : this.pointsUser *= Math.floor(Math.random() * (3 - 0) + 1);
           setTimeout(() => {
             this.messageShow = false;
           }, 4000);
@@ -84,11 +96,15 @@ export class AskedComponent implements OnInit {
       case 3:
         if (this.response3 !== this.selectedPokemon) {
           this.sweetAlert.showWarning('Error', 'No has acertado');
+          if (this.pointsUser != 0) {
+            this.ranking.addPoint(this.pointsUser, "Preguntados");
+          }
           setTimeout(() => {
             this.errorShow = false;
           }, 4000);
         } else {
           this.sweetAlert.showSuccess('Correcto', 'Has acertado');
+          this.pointsUser == 0 ? this.pointsUser = 3 : this.pointsUser *= Math.floor(Math.random() * (3 - 0) + 1);
           setTimeout(() => {
             this.messageShow = false;
           }, 4000);
